@@ -1,0 +1,23 @@
+<h1>Wines</h1>
+
+<ul>
+  <li><%= link_to("All Wines", wines_path) %></li>
+  <% Cellar.all.each do |cellar| %>
+    <%= link_to("#{cellar.name} Wines", wines_path(cellar_id: cellar.id)) %></li>
+  <% end %>
+</ul>
+
+<table>
+  <thead>
+    <th>Name</th>
+    <th>Vintage</th>
+    <th>Cellar</th>
+  </thead>
+  <% @wines.each do |wine| %>
+    <tr>
+      <td><%= wine.name %></td>
+      <td><%= wine.vintage %></td>
+      <td><%= wine.cellar.name %></td>
+    </tr>
+  <% end %>
+</table>
